@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline for Node.js
 
 on:
   push:
@@ -11,23 +11,24 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Run tests
+      - name: Run Tests
         run: npm test | tee test-results.txt
 
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
         with:
           name: test-results
           path: test-results.txt
@@ -35,20 +36,21 @@ jobs:
   deploy:
     needs: test
     runs-on: self-hosted
+
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Download test results
-        uses: actions/download-artifact@v3
+      - name: Download Test Results
+        uses: actions/download-artifact@v4
         with:
           name: test-results
 
-      - name: Show test results
+      - name: Show Test Results
         run: cat test-results.txt
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm install
 
-      - name: Start application
+      - name: Start Application
         run: npm start
