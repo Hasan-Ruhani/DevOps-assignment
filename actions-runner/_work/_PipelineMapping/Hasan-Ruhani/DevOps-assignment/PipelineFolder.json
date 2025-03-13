@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "Hasan-Ruhani/DevOps-assignment",
+  "pipelineDirectory": "DevOps-assignment",
+  "workspaceDirectory": "DevOps-assignment\\DevOps-assignment",
+  "repositories": {
+    "Hasan-Ruhani/DevOps-assignment": {
+      "repositoryPath": "DevOps-assignment\\DevOps-assignment",
+      "lastRunOn": "03/13/2025 13:05:46 +06:00"
+    }
+  },
+  "lastRunOn": "03/13/2025 13:05:46 +06:00"
+}

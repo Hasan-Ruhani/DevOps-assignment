@@ -52,5 +52,10 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Start Application
-        run: npm start
+      - name: Start Application (Windows)
+        if: runner.os == 'Windows'
+        run: start /B npm start
+
+      - name: Start Application (Linux/Mac)
+        if: runner.os != 'Windows'
+        run: nohup npm start > output.log 2>&1 &
