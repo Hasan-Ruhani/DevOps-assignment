@@ -1,49 +1,16 @@
+### Challenges & Solutions
 
+1. **Self-Hosted Runner was offline**  
+- Manually started the runner using `.\run.cmd` and made it active.  
 
-## Prerequisites
+2. **`upload-artifact@v3` was missing download info**  
+- Updated the workflow to use `upload-artifact@v4`.  
 
-- Node Version 22
+3. **`npm start` was running for 40 minutes without finishing**  
+- Used `Start-Process` on Windows and `nohup` on Linux to run it in the background.  
 
+4. **Deploy auto-trigger was not working**  
+- Configured `on: push` in the workflow to ensure automatic deployment.
 
-### 1. For Run This Applications
-```bash
-# install packages
-npm install 
-
-# Testing The Applications
-npm run check
-
-# For Run the application
-npm start
-```
-
-
-### Deployment Process
-1. **Cleanup**: Removes existing process if running
-   ```bash
-   pm2 delete node-app || true
-   ```
-
-2. **Start Application**: Launches with absolute path
-   ```bash
-   pm2 start "./src/server.js" --name node-app
-   ```
-
-3. **Save Process List**: Persists PM2 configuration
-   ```bash
-   pm2 save
-   ```
-
-### About The Applications
-1. **Route**: This Application has 2 route
-   ```bash
-   / # this will show a hello world page
-   ```
-      ```bash
-   /api # this will response a json
-   ```
-
-2. **Default Port**: By Default this application will run on port 3000
-
-
-
+  *******Note******
+  I solve all this problem you just active manually the runner by using this command "DevOps-assignment\actions-runner> ./run.cmd"
