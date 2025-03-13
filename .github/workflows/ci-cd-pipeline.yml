@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     needs: test
-    runs-on: self-hosted
+    runs-on: self-hosted  
 
     steps:
       - name: Checkout Repository
@@ -54,7 +54,7 @@ jobs:
 
       - name: Start Application (Windows)
         if: runner.os == 'Windows'
-        run: start /B npm start
+        run: Start-Process -NoNewWindow -FilePath "npm" -ArgumentList "start"
 
       - name: Start Application (Linux/Mac)
         if: runner.os != 'Windows'
